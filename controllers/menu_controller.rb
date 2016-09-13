@@ -38,18 +38,6 @@ class MenuController
       when 5
         puts "Good-bye!"
         exit(0)
-      when 6
-        puts "View entry number: "
-        entry_number = gets.chomp
-        for number in entries
-          if number == entry_number + 1
-            puts "#{entry}"
-          else
-            system "clear"
-            puts "Sorry, that is not a valid input"
-            main_menu
-          end
-        end
       else
         system "clear"
         puts "Sorry, that is not a valid input"
