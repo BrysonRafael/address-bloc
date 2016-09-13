@@ -16,7 +16,7 @@ class AddressBook
       end
     end
 
-    @entry.delete(remove_entry)
+    @entries.delete(remove_entry)
   end
 
   def add_entry(name, phone_number, email)
