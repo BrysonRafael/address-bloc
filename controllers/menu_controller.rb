@@ -1,4 +1,4 @@
-require_relative '.../models/address_book'
+require_relative '../models/address_book'
 
 class MenuController
   attr_reader :address_book
@@ -13,8 +13,8 @@ class MenuController
     puts "2 - Create an entry"
     puts "3 - Search for an entry"
     puts "4 - Import entries from a CSV"
-    puts "5 - Exit"
-    puts "6 - View Entry Number n"
+    puts "5 - View Entry n"
+    puts "6 - Exit"
     print "Enter your selection: "
 
     selection = gets.to_i
@@ -36,24 +36,31 @@ class MenuController
         read_csv
         main_menu
       when 5
+        system "clear"
+        entry_n_submenu
+        main_menu
+      when 6
         puts "Good-bye!"
         exit(0)
-      when 6
-        puts "View entry number: "
-        entry_number = gets.chomp
-        for number in entries
-          if number == entry_number + 1
-            puts "#{entry}"
-          else
-            system "clear"
-            puts "Sorry, that is not a valid input"
-            main_menu
-          end
-        end
       else
         system "clear"
         puts "Sorry, that is not a valid input"
         main_menu
+    end
+  end
+
+  def entry_n_submenu
+    print "View Entry Number: "
+    selection = gets.chomp.to_i
+
+    if selection < @address_book.entries.count
+      puts @address_book.entries[selection]
+      puts "Press Enter to return to main menu"
+      gets.chomp
+      system "clear"
+    else
+      puts "#{selection} is an invalid input"
+      entry_n_submenu
     end
   end
 
@@ -71,7 +78,7 @@ class MenuController
   def create_entry
     system "clear"
     puts "New AddressBloc Entry"
-    print: "Name: "
+    print "Name: "
     name = gets.chomp
     print "Phone number: "
     phone_number = gets.chomp
