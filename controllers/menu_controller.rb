@@ -1,4 +1,4 @@
-require_relative '.../models/address_book'
+require_relative '../models/address_book'
 
 class MenuController
   attr_reader :address_book
@@ -59,7 +59,7 @@ class MenuController
   def create_entry
     system "clear"
     puts "New AddressBloc Entry"
-    print: "Name: "
+    print "Name: "
     name = gets.chomp
     print "Phone number: "
     phone_number = gets.chomp
