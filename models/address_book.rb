@@ -40,11 +40,12 @@ class AddressBook
 
   def iterative_search(name)
     i = 0
-    if name != entries[i] do
-      i++
-    elsif name == entries[i]
-      puts name
+
+    until name == entries[i]
+      i += 1
     end
+
+    return nil
   end
 
   def remove_entry(name, phone_number, email)
