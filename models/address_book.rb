@@ -39,10 +39,10 @@ class AddressBook
   end
 
   def iterative_search(name)
-    i = 0
-
-    until name == entries[i]
-      i += 1
+    @entries.each do |entry|
+      if entry.name == name
+        return entry
+      end
     end
 
     return nil
