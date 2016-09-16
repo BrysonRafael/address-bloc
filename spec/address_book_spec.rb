@@ -43,11 +43,11 @@ RSpec.describe AddressBook do
   # Test that AddressBook's .import_from_csv() method is working as expected
   describe "#import_from_csv" do
     it "imports the correct number of entries" do
-      book.import_from_csv("entries.csv" && "entries_2.csv")
+      book.import_from_csv("entries.csv")
       book_size = book.entries.size
 
       # Check the size of the entries in AddressBook
-      expect(book_size).to eq 8
+      expect(book_size).to eq 5
     end
 
     it "imports the 1st entry" do
@@ -84,26 +84,34 @@ RSpec.describe AddressBook do
       entry_five = book.entries[4]
       check_entry(entry_five, "Sussie", "555-555-2036", "sussie@blocmail.com")
     end
+  end
+
+  context "importing from entries_2.csv" do
+    it "imports the correct number of entries" do
+      book.import_from_csv("entries_2.csv")
+
+      expect(book.entries.size).to eq 3
+    end
 
     it "imports the 1st entry" do
       book.import_from_csv("entries_2.csv")
       # Check the first entry
-      entry_six = book.entries[5]
-      check_entry(entry_six, "Steward", "555-555-9876", "steward@blocmail.com")
+      entry_one = book.entries[0]
+      check_entry(entry_one, "Matthew", "555-555-9876", "matthew@blocmail.com")
     end
 
     it "imports the 2nd entry" do
       book.import_from_csv("entries_2.csv")
       # Check the second entry
-      entry_seven = book.entries[6]
-      check_entry(entry_seven, "Mark", "555-555-5432", "mark@blocmail.com")
+      entry_two = book.entries[1]
+      check_entry(entry_two, "Mark", "555-555-5432", "mark@blocmail.com")
     end
 
     it "imports the 3rd entry" do
       book.import_from_csv("entries_2.csv")
       # Check the third entry
-      entry_eight = book.entries[7]
-      check_entry(entry_eight, "Luke", "555-555-1234", "luke@blocmail.com")
+      entry_three = book.entries[2]
+      check_entry(entry_three, "Luke", "555-555-1234", "luke@blocmail.com")
     end
   end
 end
